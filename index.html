@@ -1,218 +1,427 @@
 <!DOCTYPE html>
-<html lang="es-AR">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111014">
-  <title>Catálogos para revendedores | IZO · Zapatillas G5</title>
-  <meta name="description" content="Elegí tu catálogo de zapatillas G5 y descargá el PDF para compartir con tus clientes. Tres depósitos, compra desde un par y pedidos por WhatsApp.">
-  <style>
-    :root{color-scheme:dark;--bg:#111014;--panel:#1b191f;--line:#36313e;--text:#faf8fc;--muted:#bab3c4;--purple:#a78bfa;--button:#7544d6}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:90px}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
-    a{color:inherit;text-decoration:none}
-    button,a,summary{-webkit-tap-highlight-color:transparent}
-    a:focus-visible,summary:focus-visible{outline:3px solid #d7c7ff;outline-offset:5px}
-    .wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
-    .skip{position:fixed;top:-100px;left:16px;padding:12px;background:white;color:black;z-index:10}
-    .skip:focus{top:10px}
-    .topbar{border-bottom:1px solid var(--line);background:#111014}
-    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-    .monogram{font-weight:900;letter-spacing:-2px;font-size:30px}
-    .brand-sub{border-left:1px solid var(--line);padding-left:12px;font-size:11px;line-height:1.5;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
-    .nav-links{display:flex;gap:26px;align-items:center;font-size:13px;font-weight:700}
-    .nav-links a{padding-block:12px}
-    .nav-links a:hover{color:var(--purple)}
-    .nav-links .nav-contact{border:1px solid var(--line);border-radius:9px;padding:10px 16px}
-    .intro{padding:36px 0 30px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:center}
-    .intro-photo{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
-    .intro-photo img{display:block;width:100%;height:280px;object-fit:cover}
-    .intro-catalog-link{display:inline-flex;margin-top:18px;color:#d5c2ff;font-size:13px;font-weight:700;min-height:44px;align-items:center}
-    .catalog-image{display:block;width:100%;height:240px;object-fit:contain;background:#f5f5f5;border-bottom:1px solid var(--line)}
-    .eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 12px;color:var(--purple);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
-    .dot{width:6px;height:6px;border-radius:50%;background:var(--purple)}
-    h1{font-size:clamp(32px,4.5vw,57px);line-height:1.06;letter-spacing:-2px;margin:0 0 18px;font-weight:800}
-    h1 span{color:var(--purple)}
-    .intro-copy{max-width:670px;color:var(--muted);font-size:16px;margin:0}
-    .benefits{display:flex;flex-wrap:wrap;gap:8px 22px;margin:20px 0 0;padding:0;list-style:none;font-size:12px}
-    .benefits li::before{content:"✓";color:var(--purple);margin-right:7px}
-    .section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:16px 0}
-    .section-heading h2{font-size:16px;margin:0}
-    .section-heading p{font-size:12px;color:var(--muted);margin:0}
-    .catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .catalog-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .catalog-card.featured{border-color:#7755af}
-    .card-top{padding:22px 24px 0;display:flex;justify-content:space-between;align-items:center;gap:6px}
-    .dep{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:1.7px;text-transform:uppercase}
-    .badge{font-size:10px;font-weight:700;border:1px solid #59427c;background:#30233f;color:#e2d2ff;border-radius:5px;padding:4px 7px}
-    .card-content{padding:16px 24px 24px;display:flex;flex-direction:column;flex:1}
-    .catalog-card h3{font-size:25px;letter-spacing:-.6px;margin:0 0 9px;line-height:1.2}
-    .description{font-size:13px;color:var(--muted);margin:0 0 18px;min-height:41px}
-    .price{font-size:31px;letter-spacing:-1px;font-weight:800;margin:0 0 18px}
-    .price small{font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0}
-    .file-info{border-top:1px solid var(--line);padding-top:14px;margin:0 0 12px;color:var(--muted);font-size:11px;margin-top:auto}
-    .actions{display:grid;gap:8px}
-    .button{min-height:48px;border:1px solid transparent;border-radius:9px;padding:12px 15px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center}
-    .button.primary{background:var(--button);color:white}
-    .button.primary:hover{background:#8655e6}
-    .button.secondary{border-color:#47404f;background:transparent}
-    .button.secondary:hover{background:#28242e}
-    .icon{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .help{margin-top:18px;border:1px solid var(--line);border-radius:10px;background:#17151b}
-    summary{cursor:pointer;font-size:13px;font-weight:700;padding:16px 20px}
-    .help-body{padding:0 20px 18px;font-size:13px;color:var(--muted)}
-    .help-body p{margin:0 0 8px}
-    .help-body p:last-child{margin:0}
-    .status{font-size:13px;color:#ded0ff;margin:12px 0 0}
-    .status:empty{display:none}
-    .lower{margin-top:46px;padding-top:32px;border-top:1px solid var(--line)}
-    .lower h2{font-size:25px;letter-spacing:-.6px;margin:0 0 18px}
-    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-    .step{display:flex;align-items:flex-start;gap:12px}
-    .number{font-size:12px;border:1px solid var(--line);border-radius:50%;width:28px;height:28px;display:grid;place-items:center;flex:none;color:var(--purple)}
-    .step h3{font-size:14px;margin:2px 0 6px}
-    .step p{color:var(--muted);font-size:13px;margin:0}
-    .resources{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:34px 0}
-    .resource{padding:24px;border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;align-items:flex-start}
-    .resource h2{font-size:19px;margin:0 0 8px}
-    .resource p{font-size:13px;color:var(--muted);margin:0 0 18px}
-    .resource a{margin-top:auto;font-weight:700;font-size:13px;color:#c9afff;min-height:44px;display:flex;align-items:center}
-    footer{border-top:1px solid var(--line);padding:22px 0 32px;font-size:11px;color:var(--muted)}
-    .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .mobile-bar{display:none}
-    @media(max-width:760px){
-      .wrap{width:calc(100% - 32px)}
-      .nav{min-height:64px;gap:12px}
-      .brand-sub{font-size:9px;letter-spacing:.5px}
-      .nav-links{gap:10px;font-size:12px}
-      .nav-links .nav-catalog,.nav-links .nav-contact{display:none}
-      .intro{padding:26px 0 20px;grid-template-columns:minmax(0,1fr);gap:16px}
-      .intro-photo img{height:180px}
-      .catalog-image{height:220px}
-      h1{letter-spacing:-1px;font-size:36px}
-      .intro-copy{font-size:14px}
-      .benefits{font-size:11px;gap:7px 14px;margin-top:16px}
-      .section-heading{align-items:flex-start;flex-direction:column;gap:3px}
-      .catalog-grid{grid-template-columns:1fr;gap:14px}
-      .card-top{padding:18px 20px 0}
-      .card-content{padding:12px 20px 20px}
-      .catalog-card h3{font-size:24px}
-      .description{min-height:0;margin-bottom:12px}
-      .price{margin-bottom:12px}
-      .actions{grid-template-columns:1.25fr 1fr}
-      .steps,.resources{grid-template-columns:1fr;gap:20px}
-      .lower{margin-top:32px;padding-top:26px}
-      .resources{gap:12px}
-      footer{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
-      .mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;bottom:0;left:0;right:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#141218;border-top:1px solid var(--line);z-index:5}
-      .mobile-bar .button{min-height:44px;padding:10px;font-size:12px}
-    }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zapatillas G5 | @importadoreszonaoesteoficial</title>
+    <meta name="description"
+        content="Catálogos de zapatillas G5 para revendedores y mayoristas. Accedé a modelos con y sin precios, stock actualizado y contacto directo por WhatsApp.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --card: #171717;
+            --soft: #232323;
+            --text: #f5f5f5;
+            --muted: #b8b8b8;
+            --accent: #7c3aed;
+            --accent-2: #a855f7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            background: rgba(13, 13, 13, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important;
+        }
+
+        .hero {
+            padding: 100px 0 70px;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            color: #d8b4fe;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin-bottom: 30px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        .btn-main:hover {
+            color: #fff;
+            opacity: 0.95;
+        }
+
+        .btn-outline-light {
+            border-radius: 12px;
+            padding: 14px 24px;
+            font-weight: 700;
+        }
+
+        .hero-image {
+            background: radial-gradient(circle at top, rgba(124, 58, 237, 0.35), transparent 55%), #141414;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+            min-height: 420px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .section-text {
+            color: var(--muted);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .catalogos {
+            padding: 80px 0;
+        }
+
+        .catalog-card {
+            background: linear-gradient(180deg, #171717 0%, #121212 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 22px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        }
+
+        .catalog-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .catalog-body {
+            padding: 22px;
+        }
+
+        .catalog-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .catalog-body p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .info-section {
+            padding: 80px 0;
+        }
+
+        .info-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 28px;
+            height: 100%;
+        }
+
+        .info-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .info-box p {
+            color: var(--muted);
+            margin-bottom: 0;
+        }
+
+        .cta {
+            padding: 80px 0 100px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(168, 85, 247, 0.12));
+            border: 1px solid rgba(168, 85, 247, 0.28);
+            border-radius: 28px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            color: #ddd;
+            max-width: 720px;
+            margin: 0 auto 24px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px 0;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        @media (max-width: 991px) {
+            .hero {
+                padding-top: 70px;
+                min-height: auto;
+            }
+
+            .hero-image {
+                margin-top: 30px;
+            }
+        }
+
+        .catalog-actions {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 8px;
+        }
+
+        .catalog-actions .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            min-height: 48px;
+            padding: 12px 8px;
+            font-size: 14px;
+        }
+    </style>
 </head>
+
 <body>
-  <a class="skip" href="#catalogos-precio">Ir a los catálogos</a>
-  <header class="topbar">
-    <nav class="nav wrap" aria-label="Navegación principal">
-      <a class="brand" href="./" aria-label="IZO · Inicio"><span class="monogram">IZO<span style="color:var(--purple)">.</span></span><span class="brand-sub">Importadores<br>Zona Oeste</span></a>
-      <div class="nav-links"><a class="nav-catalog" href="#catalogos-precio">Catálogos</a><a href="galeria.html">Fotos reales ↗</a><a class="nav-contact" href="https://wa.me/5491158885785" target="_blank" rel="noopener noreferrer">Hacer un pedido ↗</a></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Zapatillas importadas calidad G5</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                        <a class="nav-link" href="galeria.html">Fotos reales</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
-  <main class="wrap">
-    <section class="intro" aria-labelledby="page-title">
-      <div class="intro-text">
-      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Exclusivo para revendedores</p>
-      <h1 id="page-title">Tu próximo pedido<br><span>empieza acá.</span></h1>
-      <p class="intro-copy">Elegí tu catálogo de zapatillas G5. Descargalo, compartilo con tus clientes y pedinos los modelos que necesitás.</p>
-      <ul class="benefits"><li>Comprá desde 1 par</li><li>PDFs sin precios ni datos nuestros</li><li>Modelos y talles en cada catálogo</li></ul>
-      <a class="intro-catalog-link" href="#catalogos-precio">Ir a los catálogos <span aria-hidden="true">&nbsp;↓</span></a>
-      </div>
-      <figure class="intro-photo"><img src="img/img-7.jpeg" alt="Zapatillas del catálogo IZO" fetchpriority="high" decoding="async"></figure>
-    </section>
-    <section id="catalogos-precio" aria-labelledby="catalog-title">
-      <div class="section-heading"><h2 id="catalog-title">Catálogos disponibles</h2><p>3 depósitos · Precios por par</p></div>
-      <div class="catalog-grid">
-        <article class="catalog-card" aria-labelledby="dep-1">
-          <img class="catalog-image" src="img/dep1-listadeprecios.png" alt="Presentación del catálogo de zapatillas del depósito 1" loading="lazy" decoding="async">
-          <div class="card-top"><span class="dep">Depósito 1</span><span class="badge">Últimas unidades</span></div>
-          <div class="card-content">
-            <h3 id="dep-1">Mega liquidaciones</h3><p class="description">Últimos talles y unidades disponibles.</p>
-            <p class="price">$50.000 <small>ARS / par</small></p>
-            <p class="file-info">PDF para compartir<span class="file-size" data-file="archivos/StockLiquidaciones.pdf"></span></p>
-            <div class="actions">
-              <a class="button primary download" href="archivos/StockLiquidaciones.pdf" download="IZO-Catalogo-Deposito-1.pdf" aria-label="Descargar PDF del depósito 1" data-depot="1"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>Descargar PDF</a>
-              <a class="button secondary" href="archivos/StockLiquidaciones.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver PDF del depósito 1 en otra pestaña">Ver PDF <span aria-hidden="true">↗</span></a>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="hero-badge">Catálogos · PDFs · Descargas</span>
+                    <h1>Empezá a revender zapatillas G5 y generá ingresos desde el primer día</h1>
+                    <p>
+                        Tenemos más de 500 modelos de zapatillas exclusivas para revendedores y mayoristas, con precios
+                        únicos y stock actualizados todas las semanas. (NO necesitas compra mínima, podes pedir desde 1
+                        par)
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#catalogos-precio" class="btn btn-main">Ver catálogos</a>
+                        <a href="https://wa.me/5491158885785" target="_blank" class="btn btn-outline-light">Hacer pedido
+                            por whatsapp</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="./img/img-7.jpeg" alt="Imagen principal de catálogo">
+                    </div>
+                </div>
             </div>
-          </div>
-        </article>
-<article class="catalog-card" aria-labelledby="dep-2">
-          <img class="catalog-image" src="img/dep2-listadeprecios.png" alt="Presentación del catálogo de zapatillas del depósito 2" loading="lazy" decoding="async">
-          <div class="card-top"><span class="dep">Depósito 2</span><span class="badge">Oportunidades</span></div>
-          <div class="card-content">
-            <h3 id="dep-2">Liquidaciones</h3><p class="description">Modelos exclusivos con variedad de talles.</p>
-            <p class="price">$75.000 <small>ARS / par</small></p>
-            <p class="file-info">PDF para compartir<span class="file-size" data-file="archivos/Dep2stockLiq.pdf"></span></p>
-            <div class="actions">
-              <a class="button primary download" href="archivos/Dep2stockLiq.pdf" download="IZO-Catalogo-Deposito-2.pdf" aria-label="Descargar PDF del depósito 2" data-depot="2"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>Descargar PDF</a>
-              <a class="button secondary" href="archivos/Dep2stockLiq.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver PDF del depósito 2 en otra pestaña">Ver PDF <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </article>
-<article class="catalog-card featured" aria-labelledby="dep-3">
-          <img class="catalog-image" src="img/dep3-listadeprecios.png" alt="Presentación del catálogo de zapatillas del depósito 3" loading="lazy" decoding="async">
-          <div class="card-top"><span class="dep">Depósito 3</span><span class="badge">Más variedad</span></div>
-          <div class="card-content">
-            <h3 id="dep-3">Catálogo completo</h3><p class="description">Más de 400 modelos y gran variedad de talles.</p>
-            <p class="price">$110.000 <small>ARS / par</small></p>
-            <p class="file-info">PDF para compartir<span class="file-size" data-file="archivos/StockCompletoDep3.pdf"></span></p>
-            <div class="actions">
-              <a class="button primary download" href="archivos/StockCompletoDep3.pdf" download="IZO-Catalogo-Deposito-3.pdf" aria-label="Descargar PDF del depósito 3" data-depot="3"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>Descargar PDF</a>
-              <a class="button secondary" href="archivos/StockCompletoDep3.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver PDF del depósito 3 en otra pestaña">Ver PDF <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </article>
-      </div>
-      <p id="download-status" class="status" role="status" aria-live="polite"></p>
-      <details class="help"><summary>¿El PDF se abre pero no se descarga?</summary><div class="help-body"><p>Si se abre el catálogo, usá el botón de descarga o la opción “Compartir” del visor y elegí guardar el archivo.</p><p>Si entraste desde Instagram o WhatsApp y no aparece esa opción, abrí esta página en Chrome o Safari desde el menú de la aplicación y volvé a tocar “Descargar PDF”.</p><p>Después buscá el catálogo en “Descargas” o en la app “Archivos” de tu celular.</p></div></details>
+        </div>
     </section>
-    <section class="lower" aria-labelledby="how-title">
-      <h2 id="how-title">Del catálogo a tu primer pedido.</h2>
-      <div class="steps">
-        <div class="step"><span class="number" aria-hidden="true">01</span><div><h3>Elegí el depósito</h3><p>Cada uno tiene sus modelos, talles y precios. Todos los catálogos son de zapatillas calidad G5.</p></div></div>
-        <div class="step"><span class="number" aria-hidden="true">02</span><div><h3>Compartí el catálogo</h3><p>Los PDFs no incluyen precios ni datos nuestros: podés enviarlos directamente a tus clientes.</p></div></div>
-        <div class="step"><span class="number" aria-hidden="true">03</span><div><h3>Pedinos por WhatsApp</h3><p>Mandanos depósito, modelo y talle para confirmar disponibilidad. Podés comprar desde un par.</p></div></div>
-      </div>
+
+    <section class="catalogos" id="catalogos-precio">
+        <div class="container">
+            <h2 class="section-title">Catálogos disponibles para que puedas mostrar a tus clientes o subir a tus redes, no tienen precio ni ningun dato nuestro.</h2>
+            <p class="section-text">
+                Elegí el archivo que quieras ver o descargar | Cada catálogo tiene sus modelos y talles disponibles.
+            </p>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="catalog-card">
+                        <img src="img/dep1-listadeprecios.png" alt="Catálogo zapatillas G5 depósito 1" loading="lazy">
+                        <div class="catalog-body">
+                            <h3>DEP 1 MEGA LIQUIDACIONES</h3>
+                            <p>Liquidaciones por ultimos talles y ultimos modelos | <strong>$50.000 c/u</strong></p>
+                            <div class="catalog-actions">
+                                <a href="archivos/StockLiquidaciones.pdf" download class="btn btn-main">Descargar PDF</a>
+                                <a href="archivos/StockLiquidaciones.pdf" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-outline-light" aria-label="Ver PDF del depósito 1 en otra pestaña">Ver PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="catalog-card">
+                        <img src="img/dep2-listadeprecios.png" alt="Catálogo zapatillas G5 depósito 2" loading="lazy">
+                        <div class="catalog-body">
+                            <h3>DEP 2 LIQUIDACIONES</h3>
+                            <p>Liquidaciones de modelos exclusivos, variedad de modelos | <strong>$75.000 c/u</strong>.</p>
+                            <div class="catalog-actions">
+                                <a href="archivos/Dep2stockLiq.pdf" download class="btn btn-main">Descargar PDF</a>
+                                <a href="archivos/Dep2stockLiq.pdf" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-outline-light" aria-label="Ver PDF del depósito 2 en otra pestaña">Ver PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="catalog-card">
+                        <img src="img/dep3-listadeprecios.png" alt="Catálogo zapatillas G5 depósito 3" loading="lazy">
+                        <div class="catalog-body">
+                            <h3>DEP COMPLETO 2026</h3>
+                            <p>Accedé al catálogo mas completo con mas de 400 modelos disponibles | <strong>$110.000 c/u</strong> </p>
+                            <div class="catalog-actions">
+                                <a href="archivos/StockCompletoDep3.pdf" download class="btn btn-main">Descargar PDF</a>
+                                <a href="archivos/StockCompletoDep3.pdf" target="_blank" rel="noopener noreferrer"
+                                    class="btn btn-outline-light" aria-label="Ver PDF del depósito 3 en otra pestaña">Ver PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    <div class="resources">
-      <section class="resource"><h2>Mostrá cada detalle.</h2><p>Visitá la galería de fotos reales. Si necesitás imágenes de un modelo, pedínoslas por WhatsApp.</p><a href="galeria.html">Ver fotos reales <span aria-hidden="true">&nbsp;↗</span></a></section>
-      <section class="resource"><h2>Las novedades, a mano.</h2><p>Sumate al canal mayorista y recibí fotos, videos y promociones para tu negocio.</p><a href="https://whatsapp.com/channel/0029VbB1yE1KAwEtfcYZTN3W" target="_blank" rel="noopener noreferrer">Unirme al canal de WhatsApp <span aria-hidden="true">&nbsp;↗</span></a></section>
-    </div>
-  </main>
-  <footer><div class="wrap footer-inner"><span>© 2026 IZO · Importadores Zona Oeste</span><span>@importadoreszonaoesteoficial</span></div></footer>
-  <nav class="mobile-bar" aria-label="Accesos rápidos"><a class="button secondary" href="#catalogos-precio">Ver catálogos ↑</a><a class="button primary" href="https://wa.me/5491158885785" target="_blank" rel="noopener noreferrer">Pedir por WhatsApp ↗</a></nav>
-  <script>
-    // Native links keep both viewing and downloading available without JavaScript.
-    document.querySelectorAll('.download').forEach(function(link) {
-      link.addEventListener('click', function() {
-        document.getElementById('download-status').textContent =
-          'Solicitaste el catálogo del depósito ' + link.dataset.depot +
-          '. Si se abre el PDF, podés guardarlo desde el visor. Encontrá ayuda debajo de los catálogos.';
-      });
-    });
-    // Read the current file size so replacing a PDF does not leave stale metadata.
-    document.querySelectorAll('.file-size').forEach(async function(label) {
-      try {
-        var response = await fetch(label.dataset.file, { method: 'HEAD' });
-        var bytes = Number(response.headers.get('content-length'));
-        if (!response.ok || !Number.isFinite(bytes) || bytes <= 0) return;
-        var size = bytes < 1000000
-          ? Math.ceil(bytes / 1000).toLocaleString('es-AR') + ' KB'
-          : (bytes / 1000000).toLocaleString('es-AR', { maximumFractionDigits: 1 }) + ' MB';
-        label.textContent = ' · ' + size;
-      } catch (_) { /* Metadata is optional; native links remain usable. */ }
-    });
-  </script>
+
+    
+
+    <section class="info-section" id="info">
+        <div class="container">
+            <h2 class="section-title">¿Por qué hay 3 catalogos diferentes?</h2>
+            <p class="section-text">
+                Trabajamos con 3 depositos diferentes, cada uno tiene sus modelos, talles y precios. <strong>Todos son calidad G5 de la mejor calidad</strong>
+            </p>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <h4>Deposito 1 | Mega Liquidaciones</h4>
+                        <p>Modelos exclusivos a menos del costo, se liquidan por ultimos talles y unidades disponibles.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <h4>Deposito 2 | Liquidaciones</h4>
+                        <p>Liquidaciones a excelentes precios, modelos exclusivos con gran variedad de talles disponibles.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-box">
+                        <h4>Deposito 3 | Stock mas completo del mercado</h4>
+                        <p>El stock mas completo con mas de 400 modelos diferentes y gran cantidad de
+                            talles disponibles en todos sus modelos, es un poco mas caro que los anteriores ya que no
+                            son liquidaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding:40px 0;">
+  <div class="container text-center">
+    
+    <h2 style="font-weight:800;">¿Querés ver fotos reales?</h2>
+    
+    <p style="color:#b8b8b8; max-width:600px; margin:auto;">
+      Pedinos al whatsapp fotos de productos y te pasamos de inmediato para que puedas mostrar a tus clientes.
+    </p>
+
+    <a href="galeria.html" class="btn btn-main" style="margin-top:20px;">
+      Ver fotos reales
+    </a>
+
+  </div>
+</section>
+
+    <section class="cta" id="contacto">
+        <div class="container">
+            <div class="cta-box">
+                <h2>¿Querés recibir más información?</h2>
+                <p>
+                    Unite a nuestro canal para mayoristas y revendedores donde pasamos, fotos, videos, promociones y
+                    MUCHO MAS.
+                </p>
+                <a href="https://whatsapp.com/channel/0029VbB1yE1KAwEtfcYZTN3W" target="_blank"
+                    class="btn btn-main">Unirme a canal mayorista</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © 2026 @importadoreszonaoesteoficial | Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5491158885785" target="_blank" style="position:fixed;bottom:20px;right:20px;
+background:#25D366;color:white;
+padding:15px 18px;border-radius:50px;
+font-weight:bold;text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);">
+        💬
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
