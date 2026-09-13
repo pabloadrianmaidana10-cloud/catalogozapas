@@ -26,7 +26,11 @@
     .nav-links a{padding-block:12px}
     .nav-links a:hover{color:var(--purple)}
     .nav-links .nav-contact{border:1px solid var(--line);border-radius:9px;padding:10px 16px}
-    .intro{padding:48px 0 30px}
+    .intro{padding:36px 0 30px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:center}
+    .intro-photo{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+    .intro-photo img{display:block;width:100%;height:280px;object-fit:cover}
+    .intro-catalog-link{display:inline-flex;margin-top:18px;color:#d5c2ff;font-size:13px;font-weight:700;min-height:44px;align-items:center}
+    .catalog-image{display:block;width:100%;height:240px;object-fit:contain;background:#f5f5f5;border-bottom:1px solid var(--line)}
     .eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 12px;color:var(--purple);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
     .dot{width:6px;height:6px;border-radius:50%;background:var(--purple)}
     h1{font-size:clamp(32px,4.5vw,57px);line-height:1.06;letter-spacing:-2px;margin:0 0 18px;font-weight:800}
@@ -84,7 +88,9 @@
       .brand-sub{font-size:9px;letter-spacing:.5px}
       .nav-links{gap:10px;font-size:12px}
       .nav-links .nav-catalog,.nav-links .nav-contact{display:none}
-      .intro{padding:30px 0 20px}
+      .intro{padding:26px 0 20px;grid-template-columns:minmax(0,1fr);gap:16px}
+      .intro-photo img{height:180px}
+      .catalog-image{height:220px}
       h1{letter-spacing:-1px;font-size:36px}
       .intro-copy{font-size:14px}
       .benefits{font-size:11px;gap:7px 14px;margin-top:16px}
@@ -116,15 +122,20 @@
   </header>
   <main class="wrap">
     <section class="intro" aria-labelledby="page-title">
+      <div class="intro-text">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Exclusivo para revendedores</p>
       <h1 id="page-title">Tu próximo pedido<br><span>empieza acá.</span></h1>
       <p class="intro-copy">Elegí tu catálogo de zapatillas G5. Descargalo, compartilo con tus clientes y pedinos los modelos que necesitás.</p>
       <ul class="benefits"><li>Comprá desde 1 par</li><li>PDFs sin precios ni datos nuestros</li><li>Modelos y talles en cada catálogo</li></ul>
+      <a class="intro-catalog-link" href="#catalogos-precio">Ir a los catálogos <span aria-hidden="true">&nbsp;↓</span></a>
+      </div>
+      <figure class="intro-photo"><img src="img/img-7.jpeg" alt="Zapatillas del catálogo IZO" fetchpriority="high" decoding="async"></figure>
     </section>
     <section id="catalogos-precio" aria-labelledby="catalog-title">
       <div class="section-heading"><h2 id="catalog-title">Catálogos disponibles</h2><p>3 depósitos · Precios por par</p></div>
       <div class="catalog-grid">
         <article class="catalog-card" aria-labelledby="dep-1">
+          <img class="catalog-image" src="img/dep1-listadeprecios.png" alt="Presentación del catálogo de zapatillas del depósito 1" loading="lazy" decoding="async">
           <div class="card-top"><span class="dep">Depósito 1</span><span class="badge">Últimas unidades</span></div>
           <div class="card-content">
             <h3 id="dep-1">Mega liquidaciones</h3><p class="description">Últimos talles y unidades disponibles.</p>
@@ -137,6 +148,7 @@
           </div>
         </article>
 <article class="catalog-card" aria-labelledby="dep-2">
+          <img class="catalog-image" src="img/dep2-listadeprecios.png" alt="Presentación del catálogo de zapatillas del depósito 2" loading="lazy" decoding="async">
           <div class="card-top"><span class="dep">Depósito 2</span><span class="badge">Oportunidades</span></div>
           <div class="card-content">
             <h3 id="dep-2">Liquidaciones</h3><p class="description">Modelos exclusivos con variedad de talles.</p>
@@ -149,6 +161,7 @@
           </div>
         </article>
 <article class="catalog-card featured" aria-labelledby="dep-3">
+          <img class="catalog-image" src="img/dep3-listadeprecios.png" alt="Presentación del catálogo de zapatillas del depósito 3" loading="lazy" decoding="async">
           <div class="card-top"><span class="dep">Depósito 3</span><span class="badge">Más variedad</span></div>
           <div class="card-content">
             <h3 id="dep-3">Catálogo completo</h3><p class="description">Más de 400 modelos y gran variedad de talles.</p>
