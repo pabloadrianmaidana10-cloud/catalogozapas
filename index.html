@@ -240,6 +240,38 @@
             padding: 12px 8px;
             font-size: 14px;
         }
+
+        .volume-offer {
+            margin: 0 0 32px;
+            padding: 24px 20px;
+            border: 1px solid rgba(168, 85, 247, 0.55);
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.22), rgba(168, 85, 247, 0.10));
+            text-align: center;
+        }
+
+        .volume-offer p {
+            margin: 0;
+        }
+
+        .volume-offer .offer-condition {
+            color: #e9d5ff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .volume-offer .offer-discount {
+            margin-top: 8px;
+            color: #fff;
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .volume-offer .offer-discount strong {
+            color: #d8b4fe;
+        }
     </style>
 </head>
 
@@ -289,6 +321,10 @@
 
     <section class="catalogos" id="catalogos-precio">
         <div class="container">
+            <aside class="volume-offer" aria-label="Descuento por cantidad">
+                <p class="offer-condition">COMPRANDO 6 PARES O MÁS</p>
+                <p class="offer-discount"><strong>$5.000 de descuento</strong> por par</p>
+            </aside>
             <h2 class="section-title">Catálogos disponibles para que puedas mostrar a tus clientes o subir a tus redes, no tienen precio ni ningun dato nuestro.</h2>
             <p class="section-text">
                 Elegí el archivo que quieras ver o descargar | Cada catálogo tiene sus modelos y talles disponibles.
