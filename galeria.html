@@ -72,6 +72,22 @@
       .reference-card img{height:340px}
       .references-intro{font-size:.9rem}
     }
+
+    .instagram-section{padding:20px 0}
+    .instagram-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:36px;align-items:center;padding:30px;border:1px solid rgba(168,85,247,.35);border-radius:22px;background:linear-gradient(135deg,#171717,rgba(124,58,237,.10))}
+    .instagram-preview{display:block;min-width:0;background:#0d0d0d;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .instagram-preview img{display:block;width:100%;height:auto;max-height:540px;object-fit:contain}
+    .instagram-copy{min-width:0}
+    .instagram-eyebrow{display:inline-block;color:#d8b4fe;font-size:.8rem;font-weight:700;letter-spacing:1px;margin-bottom:14px}
+    .instagram-copy h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:20px}
+    .instagram-copy p{color:var(--muted);line-height:1.65;margin-bottom:18px}
+    .instagram-copy p strong{color:var(--text)}
+    .instagram-copy .btn-main{margin-top:6px;text-align:center}
+    @media(max-width:767px){
+      .instagram-panel{grid-template-columns:minmax(0,1fr);padding:18px;gap:24px}
+      .instagram-preview img{max-height:420px}
+      .instagram-copy .btn-main{display:block}
+    }
   </style>
 </head>
 <body>
@@ -87,6 +103,22 @@
         <h1>Fotos reales de nuestros modelos</h1>
         <p>Mirá los detalles de nuestras zapatillas. Si necesitás más fotos de un modelo, escribinos por WhatsApp.</p>
         <div class="top-actions"><a href="index.html#catalogos-precio" class="btn-main">Ver catálogos</a></div>
+      </div>
+    </section>
+    <section class="instagram-section" aria-labelledby="instagram-title">
+      <div class="container">
+        <div class="instagram-panel">
+          <a class="instagram-preview" href="https://www.instagram.com/importadoreszonaoesteoficial/" target="_blank" rel="noopener noreferrer" aria-label="Conocé el Instagram de Importadores Zona Oeste, abre en otra pestaña">
+            <img src="img/instagram-feed.jpg" alt="Captura del feed de Instagram de Importadores Zona Oeste" loading="lazy" decoding="async">
+          </a>
+          <div class="instagram-copy">
+            <span class="instagram-eyebrow">CONOCÉ NUESTRA TRAYECTORIA</span>
+            <h2 id="instagram-title">Más de 10 años vendiendo zapatillas importadas</h2>
+            <p><strong>Comprá con confianza.</strong> Hace más de 10 años acompañamos a clientes y revendedores con atención personalizada y experiencia en el rubro.</p>
+            <p>Conocé nuestro Instagram, mirá nuestros productos y descubrí las opiniones de quienes ya nos eligieron.</p>
+            <a class="btn-main" href="https://www.instagram.com/importadoreszonaoesteoficial/" target="_blank" rel="noopener noreferrer">Conocé nuestro Instagram <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
       </div>
     </section>
     <section class="references" aria-labelledby="references-title">
