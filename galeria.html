@@ -1,293 +1,354 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fotos Reales | Importadores Zona Oeste</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d0d0d">
+  <title>Calidad y confianza que nos respaldan | Importadores Zona Oeste</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0d0d0d;
-      --card: #171717;
-      --text: #f5f5f5;
-      --muted: #b8b8b8;
-      --accent: #7c3aed;
-      --accent-2: #a855f7;
+    :root{--bg:#0d0d0d;--card:#171717;--text:#f5f5f5;--muted:#b8b8b8;--accent:#7c3aed;--accent-2:#a855f7}
+    body{background:linear-gradient(180deg,#0b0b0b 0%,#111 100%);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+    .navbar{background:rgba(13,13,13,.92);backdrop-filter:blur(10px)}
+    .navbar-brand{color:#fff!important;font-weight:700}
+    .gallery-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .hero{padding:60px 0 30px;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;margin-bottom:14px}
+    .hero p{color:var(--muted);max-width:650px;margin:0 auto;font-size:1.05rem}
+    .btn-main{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:none;padding:12px 22px;border-radius:12px;font-weight:700;text-decoration:none;display:inline-block}
+    .btn-main:hover{color:#fff;opacity:.96}
+    .btn-outline-light{border-radius:12px;padding:12px 22px;font-weight:700}
+    .top-actions{margin-top:24px}
+    .gallery-section{padding:18px 0 100px}
+    .gallery-caption{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.88rem;margin-bottom:18px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .photo-link{display:block;border:1px solid rgba(255,255,255,.07);border-radius:22px;overflow:hidden;background:var(--card);box-shadow:0 10px 30px rgba(0,0,0,.18);transition:transform .18s ease,border-color .18s ease}
+    .photo-link img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+    .photo-link:hover{transform:translateY(-3px);border-color:var(--accent-2)}
+    a:focus-visible,button:focus-visible{outline:3px solid #d8b4fe;outline-offset:4px}
+    .whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25d366;color:#101010;padding:14px 20px;border-radius:50px;font-weight:700;text-decoration:none;box-shadow:0 5px 15px rgba(0,0,0,.3);z-index:10}
+    .whatsapp-float:hover{background:#3ce37c;color:#101010}
+    .photo-viewer{color:var(--text);background:#111;border:1px solid rgba(168,85,247,.35);border-radius:20px;padding:16px;width:min(960px,calc(100% - 24px));max-height:calc(100dvh - 24px);overflow:auto}
+    .photo-viewer::backdrop{background:rgba(0,0,0,.9)}
+    .viewer-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .viewer-top h2{font-size:1rem;margin:0;font-weight:700}
+    .viewer-close,.viewer-arrow{background:#232323;color:#fff;border:1px solid #555;border-radius:12px;min-width:48px;min-height:48px;font-size:24px}
+    .viewer-close:hover,.viewer-arrow:hover{background:var(--accent)}
+    .viewer-image{display:block;width:100%;height:min(65dvh,700px);object-fit:contain}
+    .viewer-bottom{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:12px}
+    .viewer-count{margin:0;color:var(--muted);min-width:72px;text-align:center}
+    @media(max-width:767px){
+      .hero{padding:36px 0 24px}
+      .hero p{font-size:.95rem}
+      .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .photo-link{border-radius:14px}
+      .gallery-caption{font-size:.78rem}
+      .navbar-brand{font-size:1rem;white-space:normal}
+      .gallery-nav .btn{padding:10px 14px;font-size:.85rem}
+      .photo-viewer{padding:12px;border-radius:14px}
+      .viewer-image{height:60dvh}
+    }
+    @media(prefers-reduced-motion:reduce){.photo-link{transition:none}.photo-link:hover{transform:none}}
+
+    .references{padding:20px 0 42px}
+    .references-panel{padding:28px;border:1px solid rgba(168,85,247,.35);border-radius:22px;background:linear-gradient(135deg,rgba(124,58,237,.13),#171717)}
+    .references h2,.products-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:10px}
+    .references-intro{color:var(--muted);margin-bottom:22px}
+    .references-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--accent) #232323;padding:4px 0 12px}
+    .reference-card{flex:0 0 calc((100% - 36px)/3);min-width:0;scroll-snap-align:start;padding:12px;border:1px solid rgba(168,85,247,.3);border-radius:16px;background:#232323;color:#d8b4fe;text-decoration:none}
+    .reference-card img{display:block;width:100%;height:300px;object-fit:contain;background:#151515;border-radius:9px}
+    .reference-card span{display:block;text-align:center;font-size:.8rem;margin-top:10px}
+    .references-controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:16px}
+    .references-controls[hidden]{display:none}
+    .references-arrow{width:44px;height:44px;background:#232323;border:1px solid #76529f;border-radius:12px;color:white;font-size:24px}
+    .references-arrow:disabled{opacity:.35}
+    .references-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:2px}
+    .references-dot{width:26px;height:36px;padding:0;background:none;border:0;display:grid;place-items:center}
+    .references-dot::after{content:"";width:8px;height:8px;background:#666;border-radius:50%}
+    .references-dot[aria-current="true"]::after{background:#c084fc;width:10px;height:10px}
+    @media(max-width:767px){
+      .references-panel{padding:18px 14px}
+      .reference-card{flex-basis:100%}
+      .reference-card img{height:340px}
+      .references-intro{font-size:.9rem}
     }
 
-    body {
-      background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .navbar {
-      background: rgba(13, 13, 13, 0.92);
-      backdrop-filter: blur(10px);
-    }
-
-    .navbar-brand,
-    .nav-link {
-      color: #fff !important;
-    }
-
-    .hero {
-      padding: 80px 0 40px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.6rem);
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-    }
-
-    .btn-main {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #fff;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-main:hover {
-      color: #fff;
-      opacity: 0.96;
-    }
-
-    .gallery-section {
-      padding: 30px 0 90px;
-    }
-
-    .photo-card {
-      background: linear-gradient(180deg, #171717 0%, #121212 100%);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 22px;
-      overflow: hidden;
-      height: 100%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .photo-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.24);
-    }
-
-    .photo-card img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-}
-
-.photo-card img {
-  transition: transform 0.3s ease;
-}
-
-.photo-card:hover img {
-  transform: scale(1.05);
-}
-
-    .photo-body {
-      padding: 18px;
-    }
-
-    .photo-body h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .photo-body p {
-      color: var(--muted);
-      margin-bottom: 14px;
-      font-size: 0.96rem;
-    }
-
-    .badge-soft {
-      display: inline-block;
-      background: rgba(124, 58, 237, 0.15);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      color: #d8b4fe;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .btn-outline-light {
-      border-radius: 12px;
-      padding: 12px 22px;
-      font-weight: 700;
+    .instagram-section{padding:20px 0}
+    .instagram-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:36px;align-items:center;padding:30px;border:1px solid rgba(168,85,247,.35);border-radius:22px;background:linear-gradient(135deg,#171717,rgba(124,58,237,.10))}
+    .instagram-preview{display:block;min-width:0;background:#0d0d0d;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+    .instagram-preview img{display:block;width:100%;height:auto;max-height:540px;object-fit:contain}
+    .instagram-copy{min-width:0}
+    .instagram-eyebrow{display:inline-block;color:#d8b4fe;font-size:.8rem;font-weight:700;letter-spacing:1px;margin-bottom:14px}
+    .instagram-copy h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:20px}
+    .instagram-copy p{color:var(--muted);line-height:1.65;margin-bottom:18px}
+    .instagram-copy p strong{color:var(--text)}
+    .instagram-copy .btn-main{margin-top:6px;text-align:center}
+    @media(max-width:767px){
+      .instagram-panel{grid-template-columns:minmax(0,1fr);padding:18px;gap:24px}
+      .instagram-preview img{max-height:420px}
+      .instagram-copy .btn-main{display:block}
     }
   </style>
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Importadores Zona Oeste</a>
-      <div class="ms-auto">
-        <a href="index.html" class="btn btn-outline-light">Volver a la landing</a>
-      </div>
+  <nav class="navbar sticky-top" aria-label="Navegación principal">
+    <div class="container gallery-nav">
+      <a class="navbar-brand" href="index.html">Importadores Zona Oeste</a>
+      <a href="index.html" class="btn btn-outline-light">Volver al inicio</a>
     </div>
   </nav>
-
-  <section class="hero">
-    <div class="container">
-      <h1>Fotos reales de nuestros modelos todos los días</h1>
-      <p>
-        Pedinos por whatsapp fotos y te pasamos mas de 150 fotos de productos para que puedas empezar a mostrar y publicar de inmediato.
-      </p>
-      <div class="top-actions">
-        <a href="https://wa.me/5491158885785" target="_blank" class="btn-main">Pedir fotos al whatsapp</a>
-        <a href="index.html#catalogos-precio" class="btn btn-outline-light">Ver catálogos</a>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Calidad y confianza que nos respaldan</h1>
+        <p>Más de 10 años vendiendo zapatillas importadas. Conocé nuestra trayectoria, las opiniones de nuestros clientes y los detalles de nuestros productos.</p>
+        <div class="top-actions"><a href="index.html#catalogos-precio" class="btn-main">Ver catálogos</a></div>
       </div>
-    </div>
-  </section>
-
-  <section class="gallery-section">
-    <div class="container">
-      <div class="row g-4">
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-1.jpeg" alt="Foto real modelos 1" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
+    </section>
+    <section class="instagram-section" aria-labelledby="instagram-title">
+      <div class="container">
+        <div class="instagram-panel">
+          <a class="instagram-preview" href="https://www.instagram.com/importadoreszonaoesteoficial/" target="_blank" rel="noopener noreferrer" aria-label="Conocé el Instagram de Importadores Zona Oeste, abre en otra pestaña">
+            <img src="img/instagram-feed.jpg" alt="Captura del feed de Instagram de Importadores Zona Oeste" loading="lazy" decoding="async">
+          </a>
+          <div class="instagram-copy">
+            <span class="instagram-eyebrow">CONOCÉ NUESTRA TRAYECTORIA</span>
+            <h2 id="instagram-title">Más de 10 años vendiendo zapatillas importadas</h2>
+            <p><strong>Comprá con confianza.</strong> Hace más de 10 años acompañamos a clientes y revendedores con atención personalizada y experiencia en el rubro.</p>
+            <p>Conocé nuestro Instagram, mirá nuestros productos y descubrí las opiniones de quienes ya nos eligieron.</p>
+            <a class="btn-main" href="https://www.instagram.com/importadoreszonaoesteoficial/" target="_blank" rel="noopener noreferrer">Conocé nuestro Instagram <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-2.jpeg" alt="Foto real modelos 2" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-3.jpeg" alt="Foto real modelos 3" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-4.jpeg" alt="Foto real modelos 4" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-5.jpeg" alt="Foto real modelos 5" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-6.jpeg" alt="Foto real modelos 6" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-7.jpeg" alt="Foto real modelos 7" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-8.jpeg" alt="Foto real modelos 8" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="photo-card">
-            <img src="img/img-9.jpeg" alt="Foto real modelos 9" loading="lazy" width="800" height="600">
-            <div class="photo-body">
-              <span class="badge-soft">Foto real</span>
-              <h3>Modelos Exclusivos</h3>
-              <p>Calidad G5 | Entregamos con caja, papel de seda, etiquetas y su bolsita listo para que entregues el pedido.</p>
-              <a href="https://wa.me/5491158885785" target="_blank" class="btn-main w-100 text-center">Consultar por WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
       </div>
+    </section>
+    <section class="references" aria-labelledby="references-title">
+      <div class="container">
+        <div class="references-panel">
+          <h2 id="references-title">Opiniones de nuestros clientes</h2>
+          <p class="references-intro">Sus experiencias con IZO. Deslizá para ver más y tocá una captura para ampliarla.</p>
+          <div class="references-track" id="references-track" tabindex="0" aria-label="Referencias de clientes">
+            <a class="reference-card" href="img/referenciar1.jpeg" aria-label="Ampliar referencia de cliente 1">
+              <img src="img/referenciar1.jpeg" alt="Captura de referencia de cliente 1" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar2.jpeg" aria-label="Ampliar referencia de cliente 2">
+              <img src="img/referenciar2.jpeg" alt="Captura de referencia de cliente 2" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar3.jfif" aria-label="Ampliar referencia de cliente 3">
+              <img src="img/referenciar3.jfif" alt="Captura de referencia de cliente 3" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar4.jfif" aria-label="Ampliar referencia de cliente 4">
+              <img src="img/referenciar4.jfif" alt="Captura de referencia de cliente 4" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar5.jfif" aria-label="Ampliar referencia de cliente 5">
+              <img src="img/referenciar5.jfif" alt="Captura de referencia de cliente 5" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar6.jfif" aria-label="Ampliar referencia de cliente 6">
+              <img src="img/referenciar6.jfif" alt="Captura de referencia de cliente 6" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar7.jfif" aria-label="Ampliar referencia de cliente 7">
+              <img src="img/referenciar7.jfif" alt="Captura de referencia de cliente 7" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar8.jfif" aria-label="Ampliar referencia de cliente 8">
+              <img src="img/referenciar8.jfif" alt="Captura de referencia de cliente 8" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+          </div>
+          <div class="references-controls" id="references-controls" hidden>
+            <button class="references-arrow" id="references-prev" type="button" aria-label="Referencias anteriores">‹</button>
+            <div class="references-dots" id="references-dots" aria-label="Páginas de referencias"></div>
+            <button class="references-arrow" id="references-next" type="button" aria-label="Referencias siguientes">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-section" aria-label="Galería de fotos reales">
+      <div class="container">
+        <h2 class="products-title">Fotos de nuestros productos</h2>
+        <div class="gallery-caption"><span>20 fotos reales</span><span>Tocá una foto para ampliarla</span></div>
+        <div class="gallery-grid">
+          <a class="photo-link" href="img/nvimg1(1).jpeg" aria-label="Ampliar foto 1 de 20">
+            <img src="img/nvimg1(1).jpeg" alt="Foto real de zapatillas IZO 1" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(2).jpeg" aria-label="Ampliar foto 2 de 20">
+            <img src="img/nvimg1(2).jpeg" alt="Foto real de zapatillas IZO 2" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(3).jpeg" aria-label="Ampliar foto 3 de 20">
+            <img src="img/nvimg1(3).jpeg" alt="Foto real de zapatillas IZO 3" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(4).jpeg" aria-label="Ampliar foto 4 de 20">
+            <img src="img/nvimg1(4).jpeg" alt="Foto real de zapatillas IZO 4" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(5).jpeg" aria-label="Ampliar foto 5 de 20">
+            <img src="img/nvimg1(5).jpeg" alt="Foto real de zapatillas IZO 5" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(6).jpeg" aria-label="Ampliar foto 6 de 20">
+            <img src="img/nvimg1(6).jpeg" alt="Foto real de zapatillas IZO 6" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(7).jpeg" aria-label="Ampliar foto 7 de 20">
+            <img src="img/nvimg1(7).jpeg" alt="Foto real de zapatillas IZO 7" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(8).jpeg" aria-label="Ampliar foto 8 de 20">
+            <img src="img/nvimg1(8).jpeg" alt="Foto real de zapatillas IZO 8" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(9).jpeg" aria-label="Ampliar foto 9 de 20">
+            <img src="img/nvimg1(9).jpeg" alt="Foto real de zapatillas IZO 9" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(10).jpeg" aria-label="Ampliar foto 10 de 20">
+            <img src="img/nvimg1(10).jpeg" alt="Foto real de zapatillas IZO 10" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/nvimg1(11).jpeg" aria-label="Ampliar foto 11 de 20">
+            <img src="img/nvimg1(11).jpeg" alt="Foto real de zapatillas IZO 11" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-1.jpeg" aria-label="Ampliar foto 12 de 20">
+            <img src="img/img-1.jpeg" alt="Foto real de zapatillas IZO 12" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-2.jpeg" aria-label="Ampliar foto 13 de 20">
+            <img src="img/img-2.jpeg" alt="Foto real de zapatillas IZO 13" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-3.jpeg" aria-label="Ampliar foto 14 de 20">
+            <img src="img/img-3.jpeg" alt="Foto real de zapatillas IZO 14" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-4.jpeg" aria-label="Ampliar foto 15 de 20">
+            <img src="img/img-4.jpeg" alt="Foto real de zapatillas IZO 15" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-5.jpeg" aria-label="Ampliar foto 16 de 20">
+            <img src="img/img-5.jpeg" alt="Foto real de zapatillas IZO 16" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-6.jpeg" aria-label="Ampliar foto 17 de 20">
+            <img src="img/img-6.jpeg" alt="Foto real de zapatillas IZO 17" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-7.jpeg" aria-label="Ampliar foto 18 de 20">
+            <img src="img/img-7.jpeg" alt="Foto real de zapatillas IZO 18" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-8.jpeg" aria-label="Ampliar foto 19 de 20">
+            <img src="img/img-8.jpeg" alt="Foto real de zapatillas IZO 19" loading="lazy" decoding="async">
+          </a>
+          <a class="photo-link" href="img/img-9.jpeg" aria-label="Ampliar foto 20 de 20">
+            <img src="img/img-9.jpeg" alt="Foto real de zapatillas IZO 20" loading="lazy" decoding="async">
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <a href="https://wa.me/5491158885785" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Consultar por WhatsApp">WhatsApp</a>
+  <dialog class="photo-viewer" id="photo-viewer" aria-labelledby="viewer-title">
+    <div class="viewer-top"><h2 id="viewer-title">Fotos reales · IZO</h2><button class="viewer-close" type="button" aria-label="Cerrar foto" autofocus>×</button></div>
+    <img class="viewer-image" id="viewer-image" alt="">
+    <div class="viewer-bottom">
+      <button class="viewer-arrow" id="previous-photo" type="button" aria-label="Foto anterior">‹</button>
+      <p class="viewer-count" id="viewer-count" role="status" aria-live="polite"></p>
+      <button class="viewer-arrow" id="next-photo" type="button" aria-label="Foto siguiente">›</button>
     </div>
-  </section>
+  </dialog>
+  <script>
+    (function () {
+      var productLinks = Array.from(document.querySelectorAll('.photo-link'));
+      var referenceLinks = Array.from(document.querySelectorAll('.reference-card'));
+      var allLinks = productLinks.concat(referenceLinks);
+      var links = productLinks;
+      var viewer = document.getElementById('photo-viewer');
+      // Keep ordinary image links working when the dialog API is unavailable.
+      if (!viewer || typeof viewer.showModal !== 'function') return;
+      var photo = document.getElementById('viewer-image');
+      var count = document.getElementById('viewer-count');
+      var current = 0;
+      var opener = null;
+      var previousOverflow = '';
+      function show(index) {
+        current = (index + links.length) % links.length;
+        photo.src = links[current].href;
+        photo.alt = links[current].querySelector('img').alt;
+        count.textContent = (current + 1) + ' / ' + links.length;
+      }
+      allLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          opener = link;
+          links = referenceLinks.includes(link) ? referenceLinks : productLinks;
+          document.getElementById('viewer-title').textContent =
+            links === referenceLinks ? 'Opiniones de nuestros clientes · IZO' : 'Fotos reales · IZO';
+          show(links.indexOf(link));
+          previousOverflow = document.body.style.overflow;
+          viewer.showModal();
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      viewer.querySelector('.viewer-close').addEventListener('click', function () { viewer.close(); });
+      document.getElementById('previous-photo').addEventListener('click', function () { show(current - 1); });
+      document.getElementById('next-photo').addEventListener('click', function () { show(current + 1); });
+      viewer.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+      });
+      viewer.addEventListener('click', function (event) {
+        if (event.target !== viewer) return;
+        var rect = viewer.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) viewer.close();
+      });
+      viewer.addEventListener('close', function () {
+        document.body.style.overflow = previousOverflow;
+        if (opener) opener.focus();
+      });
+    }());
 
-   <a href="https://wa.me/5491158885785" target="_blank" style="position:fixed;bottom:20px;right:20px;
-background:#25D366;color:white;
-padding:15px 18px;border-radius:50px;
-font-weight:bold;text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);">
-        💬
-    </a>
-
+    (function () {
+      var track = document.getElementById('references-track');
+      var cards = Array.from(track.querySelectorAll('.reference-card'));
+      var dots = document.getElementById('references-dots');
+      var prev = document.getElementById('references-prev');
+      var next = document.getElementById('references-next');
+      var targets = [];
+      var current = 0;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function sync() {
+        current = targets.reduce(function (best, target, index) {
+          return Math.abs(target - track.scrollLeft) < Math.abs(targets[best] - track.scrollLeft) ? index : best;
+        }, 0);
+        Array.from(dots.children).forEach(function (dot, index) { dot.setAttribute('aria-current', String(index === current)); });
+        prev.disabled = current === 0;
+        next.disabled = current === targets.length - 1;
+      }
+      function go(index) {
+        track.scrollTo({ left: targets[Math.max(0, Math.min(index, targets.length - 1))], behavior: reduced.matches ? 'auto' : 'smooth' });
+      }
+      function layout() {
+        var perPage = window.matchMedia('(max-width:767px)').matches ? 1 : 3;
+        var step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap);
+        var max = Math.max(0, track.scrollWidth - track.clientWidth);
+        targets = [];
+        for (var i = 0; i < cards.length; i += perPage) targets.push(Math.min(i * step, max));
+        targets = Array.from(new Set(targets));
+        dots.replaceChildren();
+        targets.forEach(function (_, index) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'references-dot';
+          dot.setAttribute('aria-label', 'Ver página ' + (index + 1) + ' de referencias');
+          dot.addEventListener('click', function () { go(index); });
+          dots.appendChild(dot);
+        });
+        sync();
+      }
+      prev.addEventListener('click', function () { go(current - 1); });
+      next.addEventListener('click', function () { go(current + 1); });
+      track.addEventListener('scroll', sync, { passive: true });
+      track.addEventListener('keydown', function (event) {
+        if (event.target !== track) return;
+        if (event.key === 'ArrowRight') { event.preventDefault(); go(current + 1); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); go(current - 1); }
+      });
+      window.addEventListener('resize', layout);
+      layout();
+      document.getElementById('references-controls').hidden = false;
+    }());
+  </script>
 </body>
 </html>
