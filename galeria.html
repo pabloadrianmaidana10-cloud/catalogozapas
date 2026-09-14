@@ -49,6 +49,29 @@
       .viewer-image{height:60dvh}
     }
     @media(prefers-reduced-motion:reduce){.photo-link{transition:none}.photo-link:hover{transform:none}}
+
+    .references{padding:20px 0 42px}
+    .references-panel{padding:28px;border:1px solid rgba(168,85,247,.35);border-radius:22px;background:linear-gradient(135deg,rgba(124,58,237,.13),#171717)}
+    .references h2,.products-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:10px}
+    .references-intro{color:var(--muted);margin-bottom:22px}
+    .references-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--accent) #232323;padding:4px 0 12px}
+    .reference-card{flex:0 0 calc((100% - 36px)/3);min-width:0;scroll-snap-align:start;padding:12px;border:1px solid rgba(168,85,247,.3);border-radius:16px;background:#232323;color:#d8b4fe;text-decoration:none}
+    .reference-card img{display:block;width:100%;height:300px;object-fit:contain;background:#151515;border-radius:9px}
+    .reference-card span{display:block;text-align:center;font-size:.8rem;margin-top:10px}
+    .references-controls{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:16px}
+    .references-controls[hidden]{display:none}
+    .references-arrow{width:44px;height:44px;background:#232323;border:1px solid #76529f;border-radius:12px;color:white;font-size:24px}
+    .references-arrow:disabled{opacity:.35}
+    .references-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:2px}
+    .references-dot{width:26px;height:36px;padding:0;background:none;border:0;display:grid;place-items:center}
+    .references-dot::after{content:"";width:8px;height:8px;background:#666;border-radius:50%}
+    .references-dot[aria-current="true"]::after{background:#c084fc;width:10px;height:10px}
+    @media(max-width:767px){
+      .references-panel{padding:18px 14px}
+      .reference-card{flex-basis:100%}
+      .reference-card img{height:340px}
+      .references-intro{font-size:.9rem}
+    }
   </style>
 </head>
 <body>
@@ -66,8 +89,56 @@
         <div class="top-actions"><a href="index.html#catalogos-precio" class="btn-main">Ver catálogos</a></div>
       </div>
     </section>
+    <section class="references" aria-labelledby="references-title">
+      <div class="container">
+        <div class="references-panel">
+          <h2 id="references-title">Opiniones de nuestros clientes</h2>
+          <p class="references-intro">Sus experiencias con IZO. Deslizá para ver más y tocá una captura para ampliarla.</p>
+          <div class="references-track" id="references-track" tabindex="0" aria-label="Referencias de clientes">
+            <a class="reference-card" href="img/referenciar1.jpeg" aria-label="Ampliar referencia de cliente 1">
+              <img src="img/referenciar1.jpeg" alt="Captura de referencia de cliente 1" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar2.jpeg" aria-label="Ampliar referencia de cliente 2">
+              <img src="img/referenciar2.jpeg" alt="Captura de referencia de cliente 2" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar3.jfif" aria-label="Ampliar referencia de cliente 3">
+              <img src="img/referenciar3.jfif" alt="Captura de referencia de cliente 3" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar4.jfif" aria-label="Ampliar referencia de cliente 4">
+              <img src="img/referenciar4.jfif" alt="Captura de referencia de cliente 4" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar5.jfif" aria-label="Ampliar referencia de cliente 5">
+              <img src="img/referenciar5.jfif" alt="Captura de referencia de cliente 5" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar6.jfif" aria-label="Ampliar referencia de cliente 6">
+              <img src="img/referenciar6.jfif" alt="Captura de referencia de cliente 6" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar7.jfif" aria-label="Ampliar referencia de cliente 7">
+              <img src="img/referenciar7.jfif" alt="Captura de referencia de cliente 7" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+            <a class="reference-card" href="img/referenciar8.jfif" aria-label="Ampliar referencia de cliente 8">
+              <img src="img/referenciar8.jfif" alt="Captura de referencia de cliente 8" loading="lazy" decoding="async">
+              <span>Ampliar referencia ↗</span>
+            </a>
+          </div>
+          <div class="references-controls" id="references-controls" hidden>
+            <button class="references-arrow" id="references-prev" type="button" aria-label="Referencias anteriores">‹</button>
+            <div class="references-dots" id="references-dots" aria-label="Páginas de referencias"></div>
+            <button class="references-arrow" id="references-next" type="button" aria-label="Referencias siguientes">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="gallery-section" aria-label="Galería de fotos reales">
       <div class="container">
+        <h2 class="products-title">Fotos de nuestros productos</h2>
         <div class="gallery-caption"><span>20 fotos reales</span><span>Tocá una foto para ampliarla</span></div>
         <div class="gallery-grid">
           <a class="photo-link" href="img/nvimg1(1).jpeg" aria-label="Ampliar foto 1 de 20">
@@ -146,7 +217,10 @@
   </dialog>
   <script>
     (function () {
-      var links = Array.from(document.querySelectorAll('.photo-link'));
+      var productLinks = Array.from(document.querySelectorAll('.photo-link'));
+      var referenceLinks = Array.from(document.querySelectorAll('.reference-card'));
+      var allLinks = productLinks.concat(referenceLinks);
+      var links = productLinks;
       var viewer = document.getElementById('photo-viewer');
       // Keep ordinary image links working when the dialog API is unavailable.
       if (!viewer || typeof viewer.showModal !== 'function') return;
@@ -161,12 +235,15 @@
         photo.alt = links[current].querySelector('img').alt;
         count.textContent = (current + 1) + ' / ' + links.length;
       }
-      links.forEach(function (link, index) {
+      allLinks.forEach(function (link) {
         link.addEventListener('click', function (event) {
           if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
           event.preventDefault();
           opener = link;
-          show(index);
+          links = referenceLinks.includes(link) ? referenceLinks : productLinks;
+          document.getElementById('viewer-title').textContent =
+            links === referenceLinks ? 'Opiniones de nuestros clientes · IZO' : 'Fotos reales · IZO';
+          show(links.indexOf(link));
           previousOverflow = document.body.style.overflow;
           viewer.showModal();
           document.body.style.overflow = 'hidden';
@@ -188,6 +265,57 @@
         document.body.style.overflow = previousOverflow;
         if (opener) opener.focus();
       });
+    }());
+
+    (function () {
+      var track = document.getElementById('references-track');
+      var cards = Array.from(track.querySelectorAll('.reference-card'));
+      var dots = document.getElementById('references-dots');
+      var prev = document.getElementById('references-prev');
+      var next = document.getElementById('references-next');
+      var targets = [];
+      var current = 0;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function sync() {
+        current = targets.reduce(function (best, target, index) {
+          return Math.abs(target - track.scrollLeft) < Math.abs(targets[best] - track.scrollLeft) ? index : best;
+        }, 0);
+        Array.from(dots.children).forEach(function (dot, index) { dot.setAttribute('aria-current', String(index === current)); });
+        prev.disabled = current === 0;
+        next.disabled = current === targets.length - 1;
+      }
+      function go(index) {
+        track.scrollTo({ left: targets[Math.max(0, Math.min(index, targets.length - 1))], behavior: reduced.matches ? 'auto' : 'smooth' });
+      }
+      function layout() {
+        var perPage = window.matchMedia('(max-width:767px)').matches ? 1 : 3;
+        var step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap);
+        var max = Math.max(0, track.scrollWidth - track.clientWidth);
+        targets = [];
+        for (var i = 0; i < cards.length; i += perPage) targets.push(Math.min(i * step, max));
+        targets = Array.from(new Set(targets));
+        dots.replaceChildren();
+        targets.forEach(function (_, index) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'references-dot';
+          dot.setAttribute('aria-label', 'Ver página ' + (index + 1) + ' de referencias');
+          dot.addEventListener('click', function () { go(index); });
+          dots.appendChild(dot);
+        });
+        sync();
+      }
+      prev.addEventListener('click', function () { go(current - 1); });
+      next.addEventListener('click', function () { go(current + 1); });
+      track.addEventListener('scroll', sync, { passive: true });
+      track.addEventListener('keydown', function (event) {
+        if (event.target !== track) return;
+        if (event.key === 'ArrowRight') { event.preventDefault(); go(current + 1); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); go(current - 1); }
+      });
+      window.addEventListener('resize', layout);
+      layout();
+      document.getElementById('references-controls').hidden = false;
     }());
   </script>
 </body>
