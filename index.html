@@ -47,7 +47,9 @@ a:focus-visible,button:focus-visible{outline:2px solid #d8bcff;outline-offset:5p
 .catalog-body{padding:22px 0 0;display:flex;flex-direction:column;flex:1}
 .catalog-body h3{font-size:17px;font-weight:600;line-height:1.4;margin-bottom:12px}
 .catalog-body p{color:var(--muted);font-size:13px;line-height:1.75;margin-bottom:20px}
-.catalog-body p strong{display:block;color:var(--text);font-size:23px;font-weight:600;margin-top:9px;letter-spacing:-.5px}
+.catalog-body .catalog-description{margin:0 0 9px}
+.catalog-body .catalog-price{margin:0 0 20px;color:var(--text);font-size:23px;line-height:1.6;letter-spacing:-.5px}
+.catalog-price strong{font-weight:600}
 .catalog-actions{display:grid;grid-template-columns:1.25fr 1fr;gap:10px}
 .catalog-actions .btn{display:flex;align-items:center;justify-content:center;min-width:0;min-height:46px;padding:12px 8px;font-size:13px}
 .catalog-body>.btn{font-size:13px;border-color:var(--line);color:#d5bdec}
@@ -106,6 +108,19 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
 .cta{padding:24px 0 44px}
 .cta-box{padding:24px 20px}
 .whatsapp-float{bottom:16px;right:16px}
+}
+
+/* Shared rows keep titles, descriptions, prices and actions aligned across cards. */
+@media(min-width:768px){
+.catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;row-gap:0;margin:0}
+.catalog-grid>[class*="col-"]{display:contents}
+.catalog-grid .catalog-card{display:grid;grid-template-rows:subgrid;grid-row:span 6;min-width:0;margin-bottom:32px}
+.catalog-grid .catalog-body{display:grid;grid-template-rows:subgrid;grid-row:span 5;min-width:0;padding-top:22px}
+.catalog-grid .catalog-card>img{aspect-ratio:4/5;object-fit:contain}
+.catalog-grid .catalog-body>.btn{align-self:start}
+}
+@media(min-width:992px){
+.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
     </style>
 </head>
@@ -167,13 +182,14 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                 Modelos y talles disponibles en cada PDF. Sin precios ni datos nuestros, listos para compartir con tus clientes.
             </p>
 
-            <div class="row g-4">
+            <div class="row g-4 catalog-grid">
                 <div class="col-md-6 col-lg-4">
                     <div class="catalog-card">
                         <img src="img/dep1-listadeprecios.png" alt="Catálogo zapatillas G5 depósito 1" loading="lazy">
                         <div class="catalog-body">
                             <h3>DEP 1 MEGA LIQUIDACIONES</h3>
-                            <p>Liquidaciones por ultimos talles y ultimos modelos | <strong>$50.000 c/u</strong></p>
+                            <p class="catalog-description">Liquidaciones por ultimos talles y ultimos modelos</p>
+                            <p class="catalog-price"><strong>$50.000 c/u</strong></p>
                             <div class="catalog-actions">
                                 <a href="archivos/StockLiquidaciones.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/StockLiquidaciones.pdf" target="_blank" rel="noopener noreferrer"
@@ -189,7 +205,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <img src="img/dep2-listadeprecios.png" alt="Catálogo zapatillas G5 depósito 2" loading="lazy">
                         <div class="catalog-body">
                             <h3>DEP 2 LIQUIDACIONES</h3>
-                            <p>Liquidaciones de modelos exclusivos, variedad de modelos | <strong>$78.000 c/u</strong>.</p>
+                            <p class="catalog-description">Liquidaciones de modelos exclusivos, variedad de modelos</p>
+                            <p class="catalog-price"><strong>$78.000 c/u</strong></p>
                             <div class="catalog-actions">
                                 <a href="archivos/Dep2stockLiq.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/Dep2stockLiq.pdf" target="_blank" rel="noopener noreferrer"
@@ -204,7 +221,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <img src="img/dep3-listadeprecios.png" alt="Catálogo zapatillas G5 depósito 3" loading="lazy">
                         <div class="catalog-body">
                             <h3>DEP COMPLETO 2026</h3>
-                            <p>Accedé al catálogo mas completo con mas de 400 modelos disponibles | <strong>$115.000 c/u</strong> </p>
+                            <p class="catalog-description">Accedé al catálogo mas completo con mas de 400 modelos disponibles</p>
+                            <p class="catalog-price"><strong>$115.000 c/u</strong></p>
                             <div class="catalog-actions">
                                 <a href="archivos/StockCompletoDep3.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/StockCompletoDep3.pdf" target="_blank" rel="noopener noreferrer"
