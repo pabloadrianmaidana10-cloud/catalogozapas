@@ -153,6 +153,10 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
 .whatsapp-option .btn{width:100%}
 .whatsapp-save{grid-template-columns:1fr;gap:16px;margin-top:26px}
 }
+
+.navbar .brand-logo{display:inline-flex;align-items:center;flex-shrink:0;max-width:none;padding:0}
+.brand-logo img{display:block;width:158px;height:auto}
+@media(max-width:575px){.brand-logo img{width:132px}}
     </style>
 </head>
 
@@ -160,7 +164,7 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Importadores Zona Oeste</a>
+            <a class="navbar-brand brand-logo" href="index.html" aria-label="IZO · Importadores Zona Oeste — Inicio"><img src="img/izo-logo.svg" alt="IZO — Importadores Zona Oeste" width="1572" height="304" decoding="async"></a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
