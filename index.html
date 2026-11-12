@@ -37,6 +37,8 @@ a:focus-visible,button:focus-visible{outline:2px solid #d8bcff;outline-offset:5p
 .catalogos{padding:12px 0 64px}
 .volume-offer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:42px;padding:22px 0;border-top:1px solid #695477;border-bottom:1px solid var(--line)}
 .volume-offer p{margin:0}
+.volume-offers .volume-offer:first-child{margin-bottom:0}
+.volume-offers .volume-offer + .volume-offer{border-top:0}
 .offer-condition{color:var(--muted);font-size:11px;letter-spacing:1px;font-weight:700}
 .offer-discount{font-size:clamp(18px,2.2vw,26px);letter-spacing:-.5px}
 .offer-discount strong{color:#d5bdec;font-weight:600}
@@ -48,8 +50,16 @@ a:focus-visible,button:focus-visible{outline:2px solid #d8bcff;outline-offset:5p
 .catalog-body h3{font-size:17px;font-weight:600;line-height:1.4;margin-bottom:12px}
 .catalog-body p{color:var(--muted);font-size:13px;line-height:1.75;margin-bottom:20px}
 .catalog-body .catalog-description{margin:0 0 9px}
-.catalog-body .catalog-price{margin:0 0 20px;color:var(--text);font-size:23px;line-height:1.6;letter-spacing:-.5px}
-.catalog-price strong{font-weight:600}
+.payment-option{min-width:0}
+.payment-cash{padding:16px 0 18px;border-top:1px solid var(--line)}
+.payment-label{display:block;color:var(--muted);font-size:12px;line-height:1.5;margin-bottom:6px}
+.payment-amount{display:flex;align-items:baseline;gap:7px;color:var(--text);line-height:1.2;font-variant-numeric:tabular-nums}
+.payment-amount strong{font-size:28px;font-weight:600;letter-spacing:-.7px}
+.payment-amount>span{font-size:12px;color:var(--muted)}
+.payment-credit{padding:16px 18px;margin-bottom:20px;background:#1b1820;border:1px solid #393040;border-radius:6px}
+.payment-credit .payment-amount strong{font-size:24px}
+.payment-installments{display:block;margin-top:9px;color:#d5bdec;font-size:13px;font-weight:600;line-height:1.5}
+.payment-note{display:block;margin-top:4px;color:var(--muted);font-size:11px;line-height:1.5}
 .catalog-actions{display:grid;grid-template-columns:1.25fr 1fr;gap:10px}
 .catalog-actions .btn{display:flex;align-items:center;justify-content:center;min-width:0;min-height:46px;padding:12px 8px;font-size:13px}
 .catalog-body>.btn{font-size:13px;border-color:var(--line);color:#d5bdec}
@@ -114,13 +124,34 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
 @media(min-width:768px){
 .catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;row-gap:0;margin:0}
 .catalog-grid>[class*="col-"]{display:contents}
-.catalog-grid .catalog-card{display:grid;grid-template-rows:subgrid;grid-row:span 6;min-width:0;margin-bottom:32px}
-.catalog-grid .catalog-body{display:grid;grid-template-rows:subgrid;grid-row:span 5;min-width:0;padding-top:22px}
+.catalog-grid .catalog-card{display:grid;grid-template-rows:subgrid;grid-row:span 7;min-width:0;margin-bottom:32px}
+.catalog-grid .catalog-body{display:grid;grid-template-rows:subgrid;grid-row:span 6;min-width:0;padding-top:22px}
 .catalog-grid .catalog-card>img{aspect-ratio:4/5;object-fit:contain}
 .catalog-grid .catalog-body>.btn{align-self:start}
 }
 @media(min-width:992px){
 .catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+.whatsapp-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:32px}
+.whatsapp-option{display:flex;flex-direction:column;min-width:0}
+.whatsapp-option + .whatsapp-option{border-left:1px solid #304b3a;padding-left:32px}
+.whatsapp-eyebrow{font-size:10px;font-weight:700;letter-spacing:1.2px;color:#87ba98;margin-bottom:12px}
+.whatsapp-option h3{font-size:23px;font-weight:600;letter-spacing:-.4px;margin:0 0 12px}
+.whatsapp-option p{flex:1}
+.whatsapp-option .btn{align-self:flex-start}
+.btn-channel-outline{background:transparent;color:#8de8af;border-color:#4c8b61}
+.btn-channel-outline:hover,.btn-channel-outline:active{background:#203c29;border-color:#8de8af;color:#c6f8d7}
+.whatsapp-save{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;border-top:1px solid #304b3a;margin-top:32px;padding-top:24px}
+.whatsapp-save h3{font-size:15px;font-weight:600;margin:0 0 8px}
+.whatsapp-save p{font-size:13px;margin:0;max-width:740px}
+.whatsapp-save strong{font-weight:600;color:var(--text)}
+.whatsapp-number{font-size:16px;font-weight:600;white-space:nowrap;color:#c6f8d7;font-variant-numeric:tabular-nums}
+@media(max-width:767px){
+.whatsapp-options{grid-template-columns:1fr;gap:26px;margin-top:26px}
+.whatsapp-option + .whatsapp-option{border-left:0;border-top:1px solid #304b3a;padding-left:0;padding-top:26px}
+.whatsapp-option .btn{width:100%}
+.whatsapp-save{grid-template-columns:1fr;gap:16px;margin-top:26px}
 }
     </style>
 </head>
@@ -151,14 +182,13 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
                     <span class="hero-badge">Catálogos · PDFs · Descargas</span>
-                    <h1>Zapatillas importadas para revendedores</h1>
+                    <h1>Zapatillas importadas, la mejor calidad al mejor precio.</h1>
                     <p>
-                        Más de 500 modelos de zapatillas G5 y stock actualizado todas las semanas. Comprá desde 1 par y elegí el catálogo que mejor se adapte a tus clientes.
+                        Más de 500 modelos de zapatillas G5 y stock actualizado todas las semanas. Comprá para vos o para revender, con precios mayoristas desde 1 par y descuentos por cantidad.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="#catalogos-precio" class="btn btn-main">Ver catálogos</a>
-                        <a href="https://wa.me/5491158885785" target="_blank" class="btn btn-outline-light">Hacer pedido
-                            por whatsapp</a>
+                        <a href="https://whatsapp.com/channel/0029VbB1yE1KAwEtfcYZTN3W" target="_blank" rel="noopener noreferrer" class="btn btn-channel">Unirme al canal de WhatsApp</a>
                     </div>
                 </div>
 
@@ -173,10 +203,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
 
     <section class="catalogos" id="catalogos-precio">
         <div class="container">
+            <div class="volume-offers">
             <aside class="volume-offer" aria-label="Descuento por cantidad">
                 <p class="offer-condition">COMPRANDO 6 PARES O MÁS</p>
                 <p class="offer-discount"><strong>$5.000 de descuento</strong> por par</p>
             </aside>
+            <aside class="volume-offer" aria-label="Descuento por cantidad desde 12 pares">
+                <p class="offer-condition">COMPRANDO 12 PARES O MÁS</p>
+                <p class="offer-discount"><strong>$10.000 de descuento</strong> por par</p>
+            </aside>
+            </div>
             <h2 class="section-title">Elegí tu catálogo</h2>
             <p class="section-text">
                 Modelos y talles disponibles en cada PDF. Sin precios ni datos nuestros, listos para compartir con tus clientes.
@@ -189,7 +225,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <div class="catalog-body">
                             <h3>DEP 1 MEGA LIQUIDACIONES</h3>
                             <p class="catalog-description">Liquidaciones por ultimos talles y ultimos modelos</p>
-                            <p class="catalog-price"><strong>$50.000 c/u</strong></p>
+                            <div class="payment-option payment-cash">
+                                <span class="payment-label">Efectivo o transferencia</span>
+                                <div class="payment-amount"><strong>$50.000</strong><span>c/u</span></div>
+                            </div>
+                            <div class="payment-option payment-credit">
+                                <span class="payment-label">Tarjeta de crédito</span>
+                                <div class="payment-amount"><strong>$86.000</strong><span>c/u</span></div>
+                                <span class="payment-installments">Hasta 6 cuotas sin interés</span>
+                                <span class="payment-note">Mediante Link de Pago de Mercado Pago (Tu Compra 100% Protegida)</span>
+                            </div>
                             <div class="catalog-actions">
                                 <a href="archivos/StockLiquidaciones.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/StockLiquidaciones.pdf" target="_blank" rel="noopener noreferrer"
@@ -206,7 +251,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <div class="catalog-body">
                             <h3>DEP 2 LIQUIDACIONES</h3>
                             <p class="catalog-description">Liquidaciones de modelos exclusivos, variedad de modelos</p>
-                            <p class="catalog-price"><strong>$78.000 c/u</strong></p>
+                            <div class="payment-option payment-cash">
+                                <span class="payment-label">Efectivo o transferencia</span>
+                                <div class="payment-amount"><strong>$80.000</strong><span>c/u</span></div>
+                            </div>
+                            <div class="payment-option payment-credit">
+                                <span class="payment-label">Tarjeta de crédito</span>
+                                <div class="payment-amount"><strong>$118.000</strong><span>c/u</span></div>
+                                <span class="payment-installments">Hasta 6 cuotas sin interés</span>
+                                <span class="payment-note">Mediante Link de Pago de Mercado Pago (Tu Compra 100% Protegida)</span>
+                            </div>
                             <div class="catalog-actions">
                                 <a href="archivos/Dep2stockLiq.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/Dep2stockLiq.pdf" target="_blank" rel="noopener noreferrer"
@@ -222,7 +276,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <div class="catalog-body">
                             <h3>DEP COMPLETO 2026</h3>
                             <p class="catalog-description">Accedé al catálogo mas completo con mas de 400 modelos disponibles</p>
-                            <p class="catalog-price"><strong>$115.000 c/u</strong></p>
+                            <div class="payment-option payment-cash">
+                                <span class="payment-label">Efectivo o transferencia</span>
+                                <div class="payment-amount"><strong>$115.000</strong><span>c/u</span></div>
+                            </div>
+                            <div class="payment-option payment-credit">
+                                <span class="payment-label">Tarjeta de crédito</span>
+                                <div class="payment-amount"><strong>$159.000</strong><span>c/u</span></div>
+                                <span class="payment-installments">Hasta 6 cuotas sin interés</span>
+                                <span class="payment-note">Mediante Link de Pago de Mercado Pago (Tu Compra 100% Protegida)</span>
+                            </div>
                             <div class="catalog-actions">
                                 <a href="archivos/StockCompletoDep3.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/StockCompletoDep3.pdf" target="_blank" rel="noopener noreferrer"
@@ -277,18 +340,42 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
         </div>
     </section>
 
-    <section class="cta" id="contacto">
+    <section class="cta" id="contacto" aria-labelledby="whatsapp-title">
         <div class="container">
-            <div class="cta-box whatsapp-channel">
-                <h2>Sumate a nuestro canal de WhatsApp</h2>
-                <p>Recibí fotos, videos, novedades y promociones para mayoristas y revendedores.</p>
-                <a href="https://whatsapp.com/channel/0029VbB1yE1KAwEtfcYZTN3W" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-channel">
-                    <svg class="channel-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <div class="cta-box whatsapp-hub">
+                <h2 id="whatsapp-title">Conectá con nosotros por WhatsApp</h2>
+                <p>Novedades en el canal. Atención personalizada para tus pedidos.</p>
+                <div class="whatsapp-options">
+                    <div class="whatsapp-option">
+                        <span class="whatsapp-eyebrow">NOVEDADES Y PROMOCIONES</span>
+                        <h3>Sumate al canal</h3>
+                        <p>Recibí fotos, videos, nuevos ingresos y promociones para comprar para vos o revender.</p>
+                        <a href="https://whatsapp.com/channel/0029VbB1yE1KAwEtfcYZTN3W" target="_blank" rel="noopener noreferrer" class="btn btn-channel btn-channel-outline">
+                            <svg class="channel-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                         <path d="M20.52 3.48A11.9 11.9 0 0 0 12.05 0C5.47 0 .12 5.35.12 11.93c0 2.1.55 4.15 1.59 5.96L.02 24l6.25-1.64a11.94 11.94 0 0 0 5.78 1.47h.01C18.63 23.83 24 18.48 24 11.9c0-3.19-1.24-6.18-3.48-8.42ZM12.06 21.82a9.9 9.9 0 0 1-5.05-1.38l-.36-.22-3.71.97.99-3.62-.24-.38a9.87 9.87 0 0 1-1.51-5.26c0-5.47 4.46-9.93 9.94-9.93a9.86 9.86 0 0 1 7.03 2.92 9.88 9.88 0 0 1 2.91 7.03c0 5.47-4.47 9.87-10 9.87Zm5.45-7.44c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.77-1.65-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
                     </svg>
-                    <span>Unirme al canal de WhatsApp</span>
-                </a>
+                            <span>Unirme al canal de WhatsApp</span>
+                        </a>
+                    </div>
+                    <div class="whatsapp-option">
+                        <span class="whatsapp-eyebrow">CONSULTAS Y PEDIDOS</span>
+                        <h3>Hablá con nosotros</h3>
+                        <p>Consultanos por modelos, talles y formas de pago. Te ayudamos a armar tu pedido.</p>
+                        <a href="https://wa.me/5491158885785?text=Hola%2C%20vengo%20de%20la%20web%20de%20IZO%20y%20quiero%20hacer%20un%20pedido.%20%C2%BFMe%20ayudan%20con%20los%20modelos%20y%20talles%20disponibles%3F" target="_blank" rel="noopener noreferrer" class="btn btn-channel">
+                            <svg class="channel-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                        <path d="M20.52 3.48A11.9 11.9 0 0 0 12.05 0C5.47 0 .12 5.35.12 11.93c0 2.1.55 4.15 1.59 5.96L.02 24l6.25-1.64a11.94 11.94 0 0 0 5.78 1.47h.01C18.63 23.83 24 18.48 24 11.9c0-3.19-1.24-6.18-3.48-8.42ZM12.06 21.82a9.9 9.9 0 0 1-5.05-1.38l-.36-.22-3.71.97.99-3.62-.24-.38a9.87 9.87 0 0 1-1.51-5.26c0-5.47 4.46-9.93 9.94-9.93a9.86 9.86 0 0 1 7.03 2.92 9.88 9.88 0 0 1 2.91 7.03c0 5.47-4.47 9.87-10 9.87Zm5.45-7.44c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.77-1.65-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.71.23 1.35.2 1.86.12.57-.09 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+                    </svg>
+                            <span>Hacer pedido por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="whatsapp-save">
+                    <div>
+                        <h3>Agendanos para ver nuestros estados</h3>
+                        <p>Guardá nuestro número como <strong>Importadores Zona Oeste</strong> y escribinos para que también te agendemos. Compartimos promociones, fotos, videos y mucho más.</p>
+                    </div>
+                    <span class="whatsapp-number" aria-label="Nuestro número de WhatsApp">+54 9 11 5888-5785</span>
+                </div>
             </div>
         </div>
     </section>
