@@ -48,8 +48,16 @@ a:focus-visible,button:focus-visible{outline:2px solid #d8bcff;outline-offset:5p
 .catalog-body h3{font-size:17px;font-weight:600;line-height:1.4;margin-bottom:12px}
 .catalog-body p{color:var(--muted);font-size:13px;line-height:1.75;margin-bottom:20px}
 .catalog-body .catalog-description{margin:0 0 9px}
-.catalog-body .catalog-price{margin:0 0 20px;color:var(--text);font-size:23px;line-height:1.6;letter-spacing:-.5px}
-.catalog-price strong{font-weight:600}
+.payment-option{min-width:0}
+.payment-cash{padding:16px 0 18px;border-top:1px solid var(--line)}
+.payment-label{display:block;color:var(--muted);font-size:12px;line-height:1.5;margin-bottom:6px}
+.payment-amount{display:flex;align-items:baseline;gap:7px;color:var(--text);line-height:1.2;font-variant-numeric:tabular-nums}
+.payment-amount strong{font-size:28px;font-weight:600;letter-spacing:-.7px}
+.payment-amount>span{font-size:12px;color:var(--muted)}
+.payment-credit{padding:16px 18px;margin-bottom:20px;background:#1b1820;border:1px solid #393040;border-radius:6px}
+.payment-credit .payment-amount strong{font-size:24px}
+.payment-installments{display:block;margin-top:9px;color:#d5bdec;font-size:13px;font-weight:600;line-height:1.5}
+.payment-note{display:block;margin-top:4px;color:var(--muted);font-size:11px;line-height:1.5}
 .catalog-actions{display:grid;grid-template-columns:1.25fr 1fr;gap:10px}
 .catalog-actions .btn{display:flex;align-items:center;justify-content:center;min-width:0;min-height:46px;padding:12px 8px;font-size:13px}
 .catalog-body>.btn{font-size:13px;border-color:var(--line);color:#d5bdec}
@@ -114,8 +122,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
 @media(min-width:768px){
 .catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;row-gap:0;margin:0}
 .catalog-grid>[class*="col-"]{display:contents}
-.catalog-grid .catalog-card{display:grid;grid-template-rows:subgrid;grid-row:span 6;min-width:0;margin-bottom:32px}
-.catalog-grid .catalog-body{display:grid;grid-template-rows:subgrid;grid-row:span 5;min-width:0;padding-top:22px}
+.catalog-grid .catalog-card{display:grid;grid-template-rows:subgrid;grid-row:span 7;min-width:0;margin-bottom:32px}
+.catalog-grid .catalog-body{display:grid;grid-template-rows:subgrid;grid-row:span 6;min-width:0;padding-top:22px}
 .catalog-grid .catalog-card>img{aspect-ratio:4/5;object-fit:contain}
 .catalog-grid .catalog-body>.btn{align-self:start}
 }
@@ -188,7 +196,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <div class="catalog-body">
                             <h3>DEP 1 MEGA LIQUIDACIONES</h3>
                             <p class="catalog-description">Liquidaciones por ultimos talles y ultimos modelos</p>
-                            <p class="catalog-price"><strong>$50.000 c/u</strong></p>
+                            <div class="payment-option payment-cash">
+                                <span class="payment-label">Efectivo o transferencia</span>
+                                <div class="payment-amount"><strong>$50.000</strong><span>c/u</span></div>
+                            </div>
+                            <div class="payment-option payment-credit">
+                                <span class="payment-label">Tarjeta de crédito</span>
+                                <div class="payment-amount"><strong>$86.000</strong><span>c/u</span></div>
+                                <span class="payment-installments">Hasta 6 cuotas sin interés</span>
+                                <span class="payment-note">Precio total por par con tarjeta</span>
+                            </div>
                             <div class="catalog-actions">
                                 <a href="archivos/StockLiquidaciones.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/StockLiquidaciones.pdf" target="_blank" rel="noopener noreferrer"
@@ -205,7 +222,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <div class="catalog-body">
                             <h3>DEP 2 LIQUIDACIONES</h3>
                             <p class="catalog-description">Liquidaciones de modelos exclusivos, variedad de modelos</p>
-                            <p class="catalog-price"><strong>$85.000 c/u</strong></p>
+                            <div class="payment-option payment-cash">
+                                <span class="payment-label">Efectivo o transferencia</span>
+                                <div class="payment-amount"><strong>$80.000</strong><span>c/u</span></div>
+                            </div>
+                            <div class="payment-option payment-credit">
+                                <span class="payment-label">Tarjeta de crédito</span>
+                                <div class="payment-amount"><strong>$118.000</strong><span>c/u</span></div>
+                                <span class="payment-installments">Hasta 6 cuotas sin interés</span>
+                                <span class="payment-note">Precio total por par con tarjeta</span>
+                            </div>
                             <div class="catalog-actions">
                                 <a href="archivos/Dep2stockLiq.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/Dep2stockLiq.pdf" target="_blank" rel="noopener noreferrer"
@@ -221,7 +247,16 @@ footer{border-top:1px solid var(--line);padding:24px 0 90px;color:var(--muted);f
                         <div class="catalog-body">
                             <h3>DEP COMPLETO 2026</h3>
                             <p class="catalog-description">Accedé al catálogo mas completo con mas de 400 modelos disponibles</p>
-                            <p class="catalog-price"><strong>$115.000 c/u</strong></p>
+                            <div class="payment-option payment-cash">
+                                <span class="payment-label">Efectivo o transferencia</span>
+                                <div class="payment-amount"><strong>$115.000</strong><span>c/u</span></div>
+                            </div>
+                            <div class="payment-option payment-credit">
+                                <span class="payment-label">Tarjeta de crédito</span>
+                                <div class="payment-amount"><strong>$159.000</strong><span>c/u</span></div>
+                                <span class="payment-installments">Hasta 6 cuotas sin interés</span>
+                                <span class="payment-note">Precio total por par con tarjeta</span>
+                            </div>
                             <div class="catalog-actions">
                                 <a href="archivos/StockCompletoDep3.pdf" download class="btn btn-main">Descargar PDF</a>
                                 <a href="archivos/StockCompletoDep3.pdf" target="_blank" rel="noopener noreferrer"
